@@ -1,5 +1,4 @@
 import { HeroObj } from "../entities/HeroObj";
-
 const { baseAPI, key } = require("../shared/baseApi");
 
 class HeroService {
@@ -11,6 +10,10 @@ class HeroService {
                 let newHeroesList = heroesList.map(hero => new HeroObj(hero))
                 return newHeroesList;
             })
+    }
+    searchCharacters(name) {
+        return baseAPI.get(`/characters?nameStartsWith=${name}&apikey=${key}`)
+            .then(response => response)
     }
 }
 
