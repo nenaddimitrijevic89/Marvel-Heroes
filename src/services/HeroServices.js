@@ -1,0 +1,17 @@
+import { HeroObj } from "../entities/HeroObj";
+
+const { baseAPI, key } = require("../shared/baseApi");
+
+class HeroService {
+
+    getCharacters() {
+        return baseAPI.get(`/characters?apikey=${key}`)
+            .then(response => response.data.data.results)
+            .then(heroesList => {
+                let newHeroesList = heroesList.map(hero => new HeroObj(hero))
+                return newHeroesList;
+            })
+    }
+}
+
+export const heroService = new HeroService();
