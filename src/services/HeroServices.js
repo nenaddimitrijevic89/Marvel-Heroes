@@ -13,7 +13,11 @@ class HeroService {
     }
     searchCharacters(name) {
         return baseAPI.get(`/characters?nameStartsWith=${name}&apikey=${key}`)
-            .then(response => response)
+            .then(response => response.data.data.results)
+            .then(heroesList => {
+                let newHeroesList = heroesList.map(hero => new HeroObj(hero))
+                return newHeroesList
+            })
     }
 }
 

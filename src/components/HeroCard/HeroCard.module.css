@@ -33,7 +33,13 @@
     background-color:#ED1D24;
 }
 
-.cardAbs:hover{
+/* .cardAbs:hover{
     position: relative;
     top: 5px;
+} */
+
+.abs:hover{
+    font-size: 35px;
+    height: 150px;
+    bottom: 65px;
 }
