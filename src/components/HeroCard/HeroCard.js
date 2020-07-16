@@ -2,7 +2,10 @@ import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import style from './HeroCard.module.css';
 
-const HeroCard = ({ avatar, name }) => {
+const HeroCard = ({ id, avatar, name, addToMyTeam }) => {
+    const addHero = (id) => {
+        addToMyTeam(id)
+    }
     return (
         <Col lg={4} className={style.crdMargin}>
             <Card className={style.cardAbs}>
@@ -12,7 +15,7 @@ const HeroCard = ({ avatar, name }) => {
 
                     <Col className="text-center">
                         <Button variant="danger" className={style.btnMargin}>Info</Button>
-                        <Button variant="danger">Add</Button>
+                        <Button variant="danger" onClick={() => { addHero(id) }}>Add</Button>
                     </Col>
                 </Card.Body>
             </Card>
