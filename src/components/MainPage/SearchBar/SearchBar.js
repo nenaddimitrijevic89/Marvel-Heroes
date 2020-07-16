@@ -9,7 +9,7 @@ const SearchBar = ({ searchHeroes }) => {
         }
     }
     return (
-        <input class="form-control mr-sm-2" type="search" placeholder="Search and press enter" aria-label="Search" onKeyPress={search} />
+        <input class="form-control mr-sm-2" type="search" placeholder="Type and press enter" aria-label="Search" onKeyPress={search} />
     )
 }
 

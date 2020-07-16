@@ -1,8 +1,9 @@
 import React from 'react';
 import { HeroCards } from './HeroCards/HeroCards';
-import { Container, Col } from 'react-bootstrap';
-import { heroService } from '../services/HeroServices';
+import { Container, Col, Row } from 'react-bootstrap';
+import { heroService } from '../../services/HeroServices';
 import { SearchBar } from './SearchBar/SearchBar';
+import { MyTeam } from './MyTeam/MyTeam';
 
 
 class MainPage extends React.Component {
@@ -37,12 +38,16 @@ class MainPage extends React.Component {
     render() {
         return (
             <Container fluid>
-                <Col lg={9}>
-                    <SearchBar searchHeroes={this.searchHeroes} />
-                    <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
-                </Col>
-                <Col lg={3}>
-                </Col>
+                <Row>
+                    <Col lg={9}>
+                        <SearchBar searchHeroes={this.searchHeroes} />
+                        <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
+                    </Col>
+                    <Col lg={3}>
+                        <h4>My Team of Heroes</h4>
+                        <MyTeam myTeam={this.state.myTeam} />
+                    </Col>
+                </Row>
             </Container>
         )
     }
