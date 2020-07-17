@@ -1,10 +1,10 @@
 import React from 'react';
 import { MyTeamCard } from './MyTeamCard/MyTeamCard';
 
-const MyTeam = ({ myTeam }) => {
+const MyTeam = ({ myTeam, removeFromMyTeam }) => {
     return (
         <>
-            {myTeam.map(hero => <MyTeamCard hero={hero} key={hero.id} />)}
+            {myTeam.map(hero => <MyTeamCard hero={hero} key={hero.id} removeFromMyTeam={removeFromMyTeam} />)}
         </>
     )
 }

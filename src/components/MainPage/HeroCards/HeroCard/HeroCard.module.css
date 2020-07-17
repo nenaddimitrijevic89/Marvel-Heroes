@@ -1,3 +1,8 @@
+@keyframes cardAnimation{
+    0%   {height:40px; font-size: 24px;}
+    100% {height:150px; font-size: 38px;}
+}
+
 .btnMargin{
     margin-right: 10px;
 }
@@ -31,15 +36,14 @@
 .header{
     background-color: #151515;
     background-color:#ED1D24;
-}
-
-/* .cardAbs:hover{
-    position: relative;
-    top: 5px;
-} */
-
-.abs:hover{
-    font-size: 35px;
     height: 150px;
     bottom: 65px;
+}
+
+.cardAbs:hover .abs{
+    animation-name: cardAnimation;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    height:150px;
+    font-size: 38px;
 }
