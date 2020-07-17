@@ -7,7 +7,7 @@ const HeroCard = ({ id, avatar, name, addToMyTeam }) => {
         addToMyTeam(id)
     }
     return (
-        <Col lg={4} className={style.crdMargin}>
+        <Col lg={4} md={6} sm={12} className={style.crdMargin}>
             <Card className={style.cardAbs}>
                 <Card.Img variant="top" src={avatar} />
                 <Card.Title className={`text-center ${style.abs}`}>{name}</Card.Title>

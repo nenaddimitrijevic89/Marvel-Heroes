@@ -44,7 +44,7 @@ class MainPage extends React.Component {
                         <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
                     </Col>
                     <Col lg={3}>
-                        <h4>My Team of Heroes</h4>
+                        <h4 className='text-center'>My Team of Heroes</h4>
                         <MyTeam myTeam={this.state.myTeam} />
                     </Col>
                 </Row>
