@@ -7,4 +7,14 @@ class HeroObj {
     }
 }
 
-export { HeroObj };
+class HeroInfoObj {
+    constructor(heroInfoApi) {
+        this.name = heroInfoApi.name
+        this.image = `${heroInfoApi.thumbnail.path}/standard_fantastic.jpg`
+        this.fullImage = `${heroInfoApi.thumbnail.path}/detail.jpg`
+        this.id = heroInfoApi.id
+        this.description = heroInfoApi.description
+    }
+}
+
+export { HeroObj, HeroInfoObj };
