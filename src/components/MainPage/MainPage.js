@@ -4,6 +4,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import { heroService } from '../../services/HeroServices';
 import { SearchBar } from './SearchBar/SearchBar';
 import { MyTeam } from './MyTeam/MyTeam';
+import { storageService } from '../../services/StorageService';
 
 
 class MainPage extends React.Component {
@@ -16,6 +17,9 @@ class MainPage extends React.Component {
     }
 
     componentDidMount() {
+        const storedValue = storageService.get("myTeam");
+        console.log(storedValue)
+        storedValue && this.setState({ myTeam: storedValue })
         heroService.getCharacters()
             .then(response => this.setState({ heroes: response }))
     }
@@ -33,6 +37,13 @@ class MainPage extends React.Component {
         let team = this.state.heroes.filter(hero => hero.id === id)
         let myTeam = [...this.state.myTeam, ...team]
         this.setState({ myTeam })
+        storageService.set("myTeam", myTeam)
+    }
+
+    removeFromMyTeam = (id) => {
+        const myTeam = this.state.myTeam.filter(hero => hero.id !== id)
+        this.setState({ myTeam })
+        storageService.set("myTeam", myTeam)
     }
 
     render() {
@@ -45,7 +56,7 @@ class MainPage extends React.Component {
                     </Col>
                     <Col lg={3}>
                         <h4 className='text-center'>My Team of Heroes</h4>
-                        <MyTeam myTeam={this.state.myTeam} />
+                        <MyTeam myTeam={this.state.myTeam} removeFromMyTeam={this.removeFromMyTeam} />
                     </Col>
                 </Row>
             </Container>
