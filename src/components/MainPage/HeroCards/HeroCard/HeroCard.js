@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import style from './HeroCard.module.css';
+import { Link } from 'react-router-dom';
 
 const HeroCard = ({ id, avatar, name, addToMyTeam }) => {
     const addHero = (id) => {
@@ -14,7 +15,7 @@ const HeroCard = ({ id, avatar, name, addToMyTeam }) => {
                 <Card.Body className={style.back}>
 
                     <Col className="text-center">
-                        <Button variant="danger" className={style.btnMargin}>Info</Button>
+                        <Link to={`/infopage/${id}`}><Button variant="danger" className={style.btnMargin}>Info</Button></Link>
                         <Button variant="danger" onClick={() => { addHero(id) }}>Add</Button>
                     </Col>
                 </Card.Body>
