@@ -1,15 +1,15 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
 import style from './MyTeamCard.module.css';
+import { Row, Col } from 'react-bootstrap';
 
 const MyTeamCard = ({ hero }) => {
     return (
-        <Col>
-            <div className={style.teamFlex}>
+        <Row>
+            <Col className={style.teamFlex}>
                 <img src={hero.teamImage} />
-                <p>{hero.name}</p>
-            </div>
-        </Col>
+                <p className={style.teamName}>{hero.name}</p>
+            </Col>
+        </Row>
     )
 }
 
