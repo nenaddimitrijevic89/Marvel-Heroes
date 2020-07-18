@@ -5,6 +5,7 @@ import { heroService } from '../../services/HeroServices';
 import { SearchBar } from './SearchBar/SearchBar';
 import { MyTeam } from './MyTeam/MyTeam';
 import { storageService } from '../../services/StorageService';
+import { Header } from '../Header/Header';
 
 
 class MainPage extends React.Component {
@@ -18,7 +19,6 @@ class MainPage extends React.Component {
 
     componentDidMount() {
         const storedValue = storageService.get("myTeam");
-        console.log(storedValue)
         storedValue && this.setState({ myTeam: storedValue })
         heroService.getCharacters()
             .then(response => this.setState({ heroes: response }))
@@ -48,18 +48,21 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <Container fluid>
-                <Row>
-                    <Col lg={9}>
-                        <SearchBar searchHeroes={this.searchHeroes} />
-                        <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
-                    </Col>
-                    <Col lg={3}>
-                        <h4 className='text-center'>My Team of Heroes</h4>
-                        <MyTeam myTeam={this.state.myTeam} removeFromMyTeam={this.removeFromMyTeam} />
-                    </Col>
-                </Row>
-            </Container>
+            <>
+                <Header />
+                <Container fluid>
+                    <Row>
+                        <Col lg={9}>
+                            <SearchBar searchHeroes={this.searchHeroes} />
+                            <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
+                        </Col>
+                        <Col lg={3}>
+                            <h4 className='text-center'>My Team of Heroes</h4>
+                            <MyTeam myTeam={this.state.myTeam} removeFromMyTeam={this.removeFromMyTeam} />
+                        </Col>
+                    </Row>
+                </Container>
+            </>
         )
     }
 }

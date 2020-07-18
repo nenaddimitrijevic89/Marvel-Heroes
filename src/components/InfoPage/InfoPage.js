@@ -4,6 +4,7 @@ import { HeroInfoCard } from './HeroInfoCard/HeroInfoCard';
 import { Container, Button } from 'react-bootstrap';
 import { comicsService } from '../../services/ComicsServices';
 import { Comics } from './Comics/Comics';
+import { Header } from '../Header/Header';
 
 class InfoPage extends React.Component {
     constructor(props) {
@@ -28,14 +29,19 @@ class InfoPage extends React.Component {
 
     render() {
         return (
-            <Container>
-                <HeroInfoCard heroInfo={this.state.heroInfo} />
-                {this.state.showComics
-                    ? <><Button onClick={this.showOrHideComics} variant='danger'>Hide Comics</Button>
-                        <Comics comics={this.state.comics} /></>
-                    : <Button onClick={this.showOrHideComics} variant='warning'>Show Comics</Button>
-                }
-            </Container>
+            <>
+                <Header />
+                <Container fluid>
+                    <Container>
+                        <HeroInfoCard heroInfo={this.state.heroInfo} />
+                        {this.state.showComics
+                            ? <><Button onClick={this.showOrHideComics} variant='danger'>Hide Comics</Button>
+                                <Comics comics={this.state.comics} /></>
+                            : <Button onClick={this.showOrHideComics} variant='warning'>Show Comics</Button>
+                        }
+                    </Container>
+                </Container>
+            </>
         )
     }
 }

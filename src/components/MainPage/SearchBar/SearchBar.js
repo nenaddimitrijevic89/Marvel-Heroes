@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './SearchBar.module.css';
 
 const SearchBar = ({ searchHeroes }) => {
 
@@ -9,7 +10,9 @@ const SearchBar = ({ searchHeroes }) => {
         }
     }
     return (
-        <input className="form-control mr-sm-2" type="search" placeholder="Type and press enter" aria-label="Search" onKeyPress={search} />
+        <div className={style.margin}>
+            <input className="form-control mr-sm-2" type="search" placeholder="Type and press enter" aria-label="Search" onKeyPress={search} />
+        </div>
     )
 }
 
