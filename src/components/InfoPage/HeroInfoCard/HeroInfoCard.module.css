@@ -1,0 +1,14 @@
+.border{
+    padding: 20px 0px;
+    background-color: #151515;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.center{
+    text-align: center;
+}
+
+.paddingTop{
+    padding-top: 15px;
+}
