@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import style from './HeroInfoCard.module.css';
 import { FiZoomIn } from 'react-icons/fi';
+import { text } from '../../../shared/loremIpsum';
 
 const HeroInfoCard = ({ heroInfo }) => {
     const { fullImage, description, image, name } = heroInfo;
@@ -15,7 +16,7 @@ const HeroInfoCard = ({ heroInfo }) => {
                 <h2 className={style.paddingTop}>{name}</h2>
                 <p>{description
                     ? description
-                    : "Lorem Ipsum dolor sit amet"
+                    : text
                 }</p>
             </Col>
         </Row>

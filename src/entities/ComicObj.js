@@ -5,8 +5,7 @@ class ComicObj {
         this.modalImage = `${apiComic.thumbnail.path}/portrait_incredible.jpg`;
         this.id = apiComic.id;
         this.date = apiComic.dates[1].date;
-        this.prices = apiComic.prices[0].price;
-        this.description = apiComic.description;
+        this.price = apiComic.prices[0].price;
     }
 }
 

@@ -27,4 +27,5 @@
 
 .image:hover .zoomIn{
     display: block !important;
+    cursor: pointer;
 }
