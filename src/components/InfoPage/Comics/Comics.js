@@ -1,11 +1,20 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { ComicCard } from './ComicCard/ComicCard';
+import { ComicModal } from '../Modal/ComicModal';
 
-const Comics = ({ comics }) => {
+const Comics = ({ comics, comicDetails, modalIsOpen, openModal }) => {
     return (
         <Row>
-            {comics.map(comic => <ComicCard image={comic.image} key={comic.id} />)}
+            <ComicModal comicDetails={comicDetails} modalIsOpen={modalIsOpen} openModal={openModal} />
+            {comics.map(comic => <ComicCard
+                image={comic.image}
+                modalImage={comic.modalImage}
+                key={comic.id}
+                comicDetails={comicDetails}
+                modalIsOpen={modalIsOpen}
+                openModal={openModal}
+            />)}
         </Row>
     )
 }

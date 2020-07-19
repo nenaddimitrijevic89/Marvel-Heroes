@@ -12,7 +12,9 @@ class InfoPage extends React.Component {
         this.state = {
             heroInfo: [],
             comics: [],
-            showComics: false
+            showComics: false,
+            modalIsOpen: false,
+            comicDetails: {}
         }
     }
 
@@ -21,6 +23,10 @@ class InfoPage extends React.Component {
             .then(heroInfo => this.setState({ heroInfo }))
         comicsService.getComics(this.props.match.params.id)
             .then(comics => this.setState({ comics }))
+    }
+
+    openModal = (comicDetails = {}) => {
+        this.setState(prevState => ({ modalIsOpen: !prevState.modalIsOpen, comicDetails }))
     }
 
     showOrHideComics = () => {
@@ -36,7 +42,12 @@ class InfoPage extends React.Component {
                         <HeroInfoCard heroInfo={this.state.heroInfo} />
                         {this.state.showComics
                             ? <><Button onClick={this.showOrHideComics} variant='danger'>Hide Comics</Button>
-                                <Comics comics={this.state.comics} /></>
+                                <Comics comics={this.state.comics}
+                                    modalIsOpen={this.state.modalIsOpen}
+                                    openModal={this.openModal}
+                                    comicDetails={this.state.comicDetails}
+                                />
+                            </>
                             : <Button onClick={this.showOrHideComics} variant='warning'>Show Comics</Button>
                         }
                     </Container>
