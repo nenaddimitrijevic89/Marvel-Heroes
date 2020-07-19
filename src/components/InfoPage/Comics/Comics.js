@@ -8,8 +8,11 @@ const Comics = ({ comics, comicDetails, modalIsOpen, openModal }) => {
         <Row>
             <ComicModal comicDetails={comicDetails} modalIsOpen={modalIsOpen} openModal={openModal} />
             {comics.map(comic => <ComicCard
+                name={comic.name}
                 image={comic.image}
                 modalImage={comic.modalImage}
+                date={comic.date}
+                price={comic.price}
                 key={comic.id}
                 comicDetails={comicDetails}
                 modalIsOpen={modalIsOpen}

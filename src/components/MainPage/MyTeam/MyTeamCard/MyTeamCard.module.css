@@ -22,6 +22,7 @@
 }
 .teamFlex:hover .remove{
     display: block !important;
+    cursor: pointer;
 }
 .teamFlex:hover{
     background-color: #151515;
