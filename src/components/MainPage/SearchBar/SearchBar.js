@@ -11,7 +11,7 @@ const SearchBar = ({ searchHeroes }) => {
     }
     return (
         <div className={style.margin}>
-            <input className="form-control mr-sm-2" type="search" placeholder="Type and press enter" aria-label="Search" onKeyPress={search} />
+            <input className="form-control mr-sm-2" type="search" placeholder="Type hero and press enter" aria-label="Search" onKeyPress={search} />
         </div>
     )
 }

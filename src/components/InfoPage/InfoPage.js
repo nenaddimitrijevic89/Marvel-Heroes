@@ -14,7 +14,8 @@ class InfoPage extends React.Component {
             comics: [],
             showComics: false,
             modalIsOpen: false,
-            comicDetails: {}
+            comicDetails: {},
+            isFullImage: false
         }
     }
 
@@ -33,13 +34,19 @@ class InfoPage extends React.Component {
         this.setState(prevState => ({ showComics: !prevState.showComics }))
     }
 
+    showFullImage = () => {
+        this.setState(prevState => ({ isFullImage: !prevState.isFullImage }))
+    }
+
     render() {
         return (
             <>
                 <Header />
                 <Container fluid>
                     <Container>
-                        <HeroInfoCard heroInfo={this.state.heroInfo} />
+                        <HeroInfoCard heroInfo={this.state.heroInfo}
+                            showFullImage={this.showFullImage}
+                            isFullImage={this.state.isFullImage} />
                         {this.state.showComics
                             ? <><Button onClick={this.showOrHideComics} variant='danger'>Hide Comics</Button>
                                 <Comics comics={this.state.comics}

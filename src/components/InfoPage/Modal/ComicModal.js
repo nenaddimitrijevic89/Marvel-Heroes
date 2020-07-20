@@ -6,7 +6,7 @@ import style from './ComicModal.module.css';
 import { convertDate } from '../../../shared/utilities';
 
 const ComicModal = ({ comicDetails, modalIsOpen, openModal }) => {
-    const { name, image, modalImage, date, price } = comicDetails;
+    const { name, modalImage, date, price } = comicDetails;
     return (
         <Modal
             isOpen={modalIsOpen}

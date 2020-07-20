@@ -6,6 +6,7 @@ import { SearchBar } from './SearchBar/SearchBar';
 import { MyTeam } from './MyTeam/MyTeam';
 import { storageService } from '../../services/StorageService';
 import { Header } from '../Header/Header';
+import style from './MainPage.module.css';
 
 
 class MainPage extends React.Component {
@@ -56,8 +57,8 @@ class MainPage extends React.Component {
                             <SearchBar searchHeroes={this.searchHeroes} />
                             <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
                         </Col>
-                        <Col lg={3}>
-                            <h4 className='text-center'>My Team of Heroes</h4>
+                        <Col lg={3} className={style.margin}>
+                            <h4 className={`${style.boldItalic} text-center`}>My Team of Heroes</h4>
                             <MyTeam myTeam={this.state.myTeam} removeFromMyTeam={this.removeFromMyTeam} />
                         </Col>
                     </Row>
