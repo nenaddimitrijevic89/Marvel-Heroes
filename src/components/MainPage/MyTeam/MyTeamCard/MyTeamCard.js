@@ -7,7 +7,7 @@ const MyTeamCard = ({ hero, removeFromMyTeam }) => {
     return (
         <Row>
             <Col className={style.teamFlex}>
-                <img src={hero.teamImage} />
+                <img src={hero.teamImage} alt='myTeam' />
                 <p className={style.teamName}>{hero.name}</p>
                 <MdDeleteForever className={style.remove} onClick={() => { removeFromMyTeam(hero.id) }} />
             </Col>
