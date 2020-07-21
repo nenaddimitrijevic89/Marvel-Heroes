@@ -5,6 +5,7 @@ import { Container, Button } from 'react-bootstrap';
 import { comicsService } from '../../services/ComicsServices';
 import { Comics } from './Comics/Comics';
 import { Header } from '../Header/Header';
+import { Loader } from '../Loader/Loader';
 
 class InfoPage extends React.Component {
     constructor(props) {
@@ -15,7 +16,8 @@ class InfoPage extends React.Component {
             showComics: false,
             modalIsOpen: false,
             comicDetails: {},
-            isFullImage: false
+            isFullImage: false,
+            isLoading: true
         }
     }
 
@@ -24,6 +26,7 @@ class InfoPage extends React.Component {
             .then(heroInfo => this.setState({ heroInfo }))
         comicsService.getComics(this.props.match.params.id)
             .then(comics => this.setState({ comics }))
+            .finally(() => this.setState({ isLoading: false }))
     }
 
     openModal = (comicDetails = {}) => {
@@ -42,23 +45,26 @@ class InfoPage extends React.Component {
         return (
             <>
                 <Header />
-                <Container fluid>
-                    <Container>
-                        <HeroInfoCard heroInfo={this.state.heroInfo}
-                            showFullImage={this.showFullImage}
-                            isFullImage={this.state.isFullImage} />
-                        {this.state.showComics
-                            ? <><Button onClick={this.showOrHideComics} variant='danger'>Hide Comics</Button>
-                                <Comics comics={this.state.comics}
-                                    modalIsOpen={this.state.modalIsOpen}
-                                    openModal={this.openModal}
-                                    comicDetails={this.state.comicDetails}
-                                />
-                            </>
-                            : <Button onClick={this.showOrHideComics} variant='warning'>Show Comics</Button>
-                        }
+                {this.state.isLoading
+                    ? <Loader />
+                    : <Container fluid>
+                        <Container>
+                            <HeroInfoCard heroInfo={this.state.heroInfo}
+                                showFullImage={this.showFullImage}
+                                isFullImage={this.state.isFullImage} />
+                            {this.state.showComics
+                                ? <><Button onClick={this.showOrHideComics} variant='danger'>Hide Comics</Button>
+                                    <Comics comics={this.state.comics}
+                                        modalIsOpen={this.state.modalIsOpen}
+                                        openModal={this.openModal}
+                                        comicDetails={this.state.comicDetails}
+                                    />
+                                </>
+                                : <Button onClick={this.showOrHideComics} variant='warning'>Show Comics</Button>
+                            }
+                        </Container>
                     </Container>
-                </Container>
+                }
             </>
         )
     }

@@ -7,6 +7,7 @@ import { MyTeam } from './MyTeam/MyTeam';
 import { storageService } from '../../services/StorageService';
 import { Header } from '../Header/Header';
 import style from './MainPage.module.css';
+import { Loader } from '../Loader/Loader';
 
 
 class MainPage extends React.Component {
@@ -14,7 +15,8 @@ class MainPage extends React.Component {
         super(props);
         this.state = {
             heroes: [],
-            myTeam: []
+            myTeam: [],
+            isLoading: true
         }
     }
 
@@ -23,6 +25,7 @@ class MainPage extends React.Component {
         storedValue && this.setState({ myTeam: storedValue })
         heroService.getCharacters()
             .then(response => this.setState({ heroes: response }))
+            .finally(() => this.setState({ isLoading: false }))
     }
 
     searchHeroes = (text) => {
@@ -48,21 +51,27 @@ class MainPage extends React.Component {
     }
 
     render() {
+        // if (this.state.isLoading) {
+        //     return <Loader />
+        // }
         return (
             <>
                 <Header />
-                <Container fluid>
-                    <Row>
-                        <Col lg={9}>
-                            <SearchBar searchHeroes={this.searchHeroes} />
-                            <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
-                        </Col>
-                        <Col lg={3} className={style.margin}>
-                            <h4 className={`${style.boldItalic} text-center`}>My Team of Heroes</h4>
-                            <MyTeam myTeam={this.state.myTeam} removeFromMyTeam={this.removeFromMyTeam} />
-                        </Col>
-                    </Row>
-                </Container>
+                {this.state.isLoading
+                    ? <Loader />
+                    : <Container fluid>
+                        <Row>
+                            <Col lg={9}>
+                                <SearchBar searchHeroes={this.searchHeroes} />
+                                <HeroCards heroes={this.state.heroes} addToMyTeam={this.addToMyTeam} />
+                            </Col>
+                            <Col lg={3} className={style.margin}>
+                                <h4 className={`${style.boldItalic} text-center`}>My Team of Heroes</h4>
+                                <MyTeam myTeam={this.state.myTeam} removeFromMyTeam={this.removeFromMyTeam} />
+                            </Col>
+                        </Row>
+                    </Container>
+                }
             </>
         )
     }
